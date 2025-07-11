@@ -38,10 +38,10 @@ console.log(cemberinCevresi(5));
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function cemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function cemberinAlani(r, pi) {
+  return pi * Math.pow(r, 2);
 }
-
+console.log(cemberinAlani(15, pi));
 /* (Oto test yok) Yukarıdaki cemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
 /* GÖREV 3:
@@ -64,36 +64,76 @@ function cemberinAlani(/* kodlar buraya */) {
 /* (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
 
 let ucetambolunenler,
-  enkucuk,
-  enbuyuk,
   ucebolunenlerintoplami,
   besyuzdenkucuksayilar,
-  siralisayilar,
-  tekraredensayilar;
+  siralisayilar
+  ;
 
 // 3a çözümü
 
-/* kodlar buraya */
+let enbuyuk = sayilar[0];
+let enkucuk = sayilar[0];
+
+for (let i = 1; i < sayilar.length; i++) {
+  if (sayilar[i] > enbuyuk) {
+    enbuyuk = sayilar[i];
+  }
+  if (sayilar[i] < enkucuk) {
+    enkucuk = sayilar[i];
+  }
+}
+console.log(`En büyük sayı: ${enbuyuk}, En küçük sayı: ${enkucuk}`);
 
 // 3b çözümü:
 
-/* kodlar buraya */
+ucetambolunenler = [];
+sayilar.forEach((sayi) => {
+  if (sayi % 3 === 0) {
+	ucetambolunenler.push(sayi);
+  }
+});
+
 
 // 3c çözümü:
-
-/* kodlar buraya */
-
+ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi) => {
+  return toplam + sayi;
+}, 0);
 // 3d çözümü
 
-/* kodlar buraya */
+besyuzdenkucuksayilar = sayilar.filter((sayi) => {
+	  return sayi < 500;
+}
+);
+
 
 // 3e çözümü
+siralisayilar = besyuzdenkucuksayilar.sort((a, b) => {
+  return a - b;
+});
 
-/* kodlar buraya */
 
 // 3f çözümü
+const frekanslar = {};
+const tekraredensayilar = [];
 
-/* kodlar buraya */
+// 1. DÖNGÜ – Frekansları hesapla
+sayilar.forEach(sayi => {
+  if (frekanslar[sayi]) {
+    frekanslar[sayi]++;
+  } else {
+    frekanslar[sayi] = 1;
+  }
+});
+
+for (let sayi in frekanslar) {
+  if (frekanslar[sayi] > 1) {
+    tekraredensayilar.push(`${sayi} sayısı ${frekanslar[sayi]} kere tekrar edilmiştir`);
+  }
+}
+
+console.log(tekraredensayilar);
+
+
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 module.exports = {
